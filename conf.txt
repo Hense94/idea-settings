@@ -1,0 +1,12 @@
+Themes
+  Applications: Numix
+  Cursor	Breeze_cursors
+  Icons		Numix-Circle
+
+Extentions
+  AlternateTab
+  Caffeine
+  Dash to dock
+  No topleft hot corner
+  Remove dropdown arrows
+  Workspace grid
