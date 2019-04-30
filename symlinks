@@ -1,3 +1,4 @@
 ~/dotfiles/.bashrc:~/.bashrc
 ~/dotfiles/.gitconfig:~/.gitconfig
 ~/dotfiles/.inputrc:~/.inputrc
+~/dotfiles/.bash_aliases:~/.bash_aliases
