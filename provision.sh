@@ -11,7 +11,7 @@ do
   cmp --silent "$src" "$dst" || ln -s "$src" "$dst"
 done < "$input"
 
-#Disable apport
+#Remove apport
 sudo apt purge apport -y
 
 #Remove dock/dash
@@ -24,15 +24,23 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschn
 sudo apt-get update
 sudo apt-get install albert -y
 
+#Install Chrome
+curl -L -O "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+sudo dpkg --install google-chrome-stable_current_amd64.deb
+
 #Update and clean up 
 sudo update -y
 sudo apt autoremove -y
 
 #Install Monaco font
-./install_font.sh
+curl -L -O "http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf"
+mv Monaco_Linux.ttf "~/.local/share/fonts/Monaco_Linux.ttf"
+fc-cache -f
+
+#Set keyboard shortcuts
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ < ~/dotfiles/keys.conf
 
 #Install terminal profile
-
 dlist_append() {
     local key="$1"; shift
     local val="$1"; shift
