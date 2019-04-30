@@ -1,4 +1,6 @@
 #!/bin/bash
+
+#Create symlinks
 input="symlinks"
 
 while IFS= read -r var
@@ -9,6 +11,22 @@ do
   cmp --silent "$src" "$dst" || ln -s "$src" "$dst"
 done < "$input"
 
+#Disable apport
+sudo apt purge apport -y
+
+#Remove dock/dash
+sudo apt remove gnome-shell-extension-ubuntu-dock -y
+
+#Install albert
+VERSION=$(lsb_release -a 2> /dev/null | grep Release | grep -Po "[0-9\.]+$")
+
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$VERSION/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
+sudo apt-get update
+sudo apt-get install albert -y
+
+#Update and clean up 
+sudo update -y
+sudo apt autoremove -y
 
 #Install Monaco font
 ./install_font.sh
