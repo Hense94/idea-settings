@@ -10,6 +10,9 @@ do
 done < "$input"
 
 
+#Install Monaco font
+./install_font.sh
+
 #Install terminal profile
 
 dlist_append() {
