@@ -17,8 +17,13 @@ echo "done!"
 
 echo ""
 #Install curl
-echo "Installing curl..."
-sudo apt install curl -y
+CURL_INSTALLED=$(dpkg -s "curl" 2> /dev/null | grep "install ok installed")
+if [ "" == "$CURL_INSTALLED" ]; then
+  echo "Installing curl..."
+  sudo apt install curl -y
+else 
+  echo "curl already installed"
+fi
 echo "done!"
 
 echo ""
