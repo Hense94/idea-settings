@@ -33,7 +33,9 @@ curl -L -O "http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf"
 mv Monaco_Linux.ttf ~/.local/share/fonts/Monaco_Linux.ttf
 fc-cache -f
 
-#Use numix circle
+#Use numix circle and monaco font
+dconf write /org/gnome/desktop/interface/icon-theme "'Numix-Circle'"
+dconf write /org/gnome/desktop/interface/monospace-font-name= "'Monaco 13'"
 
 #Keyboard shortcuts
 dconf load /org/gnome/settings-daemon/plugins/media-keys/ < ~/dotfiles/keys.conf
