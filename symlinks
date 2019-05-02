@@ -3,3 +3,4 @@
 ~/dotfiles/.inputrc:~/.inputrc
 ~/dotfiles/.bash_aliases:~/.bash_aliases
 ~/dotfiles/qt5ct.conf:~/.config/qt5ct/qt5ct.conf
+~/dotfiles/albert.conf:~/.config/ablert/albert.conf
