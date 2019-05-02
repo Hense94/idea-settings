@@ -1,10 +1,11 @@
 #!/bin/bash
 
+#------------------- MISC. -------------------
 DIST_VERSION=$(lsb_release -a 2> /dev/null | grep Release | grep -Po "[0-9\.]+$")
-
-#Misc
 sudo apt install apt-transport-https -y
 
+
+#------------------- REPOS -------------------
 #Albert repo
 echo "deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$DIST_VERSION/ /" | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
 
@@ -15,11 +16,33 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 #Update
 sudo apt update
 
+
+#------------------ REMOVAL ------------------
 #Remove apport
 sudo apt purge apport -y
 
 #Remove dock/dash
 sudo apt remove gnome-shell-extension-ubuntu-dock -y
+
+
+#------------------ INSTALL ------------------
+#Install curl
+sudo apt install curl -y
+
+#Install git
+sudo apt install git -y
+
+#Install tweak-tool
+sudo apt install gnome-tweaks -y
+
+#Install gnome-extensions thingy
+sudo apt install chrome-gnome-shell -y 
+
+#Install qt5ct
+sudo apt install qt5ct -y
+
+#Install numix iconss
+sudo apt install numix-icon-theme-circle -y
 
 #Install albert
 sudo apt install albert -y
@@ -27,12 +50,7 @@ sudo apt install albert -y
 #Install Sublime
 sudo apt install sublime-text -y
 
-#Install Chrome
-curl -L -O "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-sudo dpkg --install google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
-
-#Update and clean up 
+#------------------ CLEANUP ------------------
 sudo update -y
 sudo apt autoremove -y
 
