@@ -6,4 +6,5 @@ eval "$(ssh-agent -s)"
 
 ssh-add ~/.ssh/id_rsa
 
-cat ~/.ssh/id_rsa.pub
+cat ~/.ssh/id_rsa.pub | xclip -sel c
+

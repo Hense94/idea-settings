@@ -101,6 +101,14 @@ dconf write /org/gnome/desktop/interface/monospace-font-name= "'Monaco 13'"
 echo "done!"
 
 echo ""
+#Extension settings
+echo "Setting extension settings..."
+dconf write /org/gnome/shell/extensions/desktop-icons/show-home false
+dconf write /org/gnome/shell/extensions/desktop-icons/show-trash false
+echo "done!"
+
+
+echo ""
 #Keyboard shortcuts
 echo "Setting keyboard shortcuts..."
 dconf load /org/gnome/settings-daemon/plugins/media-keys/ < ~/dotfiles/keys.conf
