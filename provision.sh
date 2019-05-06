@@ -16,22 +16,11 @@ done < "symlinks"
 echo "done!"
 
 echo ""
-#Install curl
-CURL_INSTALLED=$(dpkg -s "curl" 2> /dev/null | grep "install ok installed")
-if [ "" == "$CURL_INSTALLED" ]; then
-  echo "Installing curl..."
-  sudo apt install curl -y
-else 
-  echo "curl already installed"
-fi
-echo "done!"
-
-echo ""
 #Add Albert repo
 echo "Adding albert repo..."
 DIST_VERSION=$(lsb_release -a 2> /dev/null | grep Release | grep -Po "[0-9\.]+$")
 #sudo apt install apt-transport-https -y
-curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
+wget -qO - https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$DIST_VERSION/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
 echo "done!"
 
